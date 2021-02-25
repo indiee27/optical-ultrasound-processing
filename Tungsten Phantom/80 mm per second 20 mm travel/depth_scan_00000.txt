@@ -1,0 +1,7 @@
+Date: 18/02/2021
+Time: 15:18:29
+Sampling rate (samples/s): 100000000
+Digitization range (V):0
+Vertical offset (V): 0
+Samples per depth scan: 1949
+Annotation: 
