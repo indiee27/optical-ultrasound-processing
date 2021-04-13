@@ -12,7 +12,7 @@
 % This section simply loads the data file and assigns the data to vectors
 % in matlab so that it is easy to manipulate.
 
-[file,path] = uigetfile('*.txt');
+[file,path] = uigetfile('fiber_no_num.txt');
 fid = fopen([path,file]);
 aa = fread(fid); %reading file
 fclose(fid); %closing file
