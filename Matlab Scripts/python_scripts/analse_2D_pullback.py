@@ -1,5 +1,5 @@
 # imports
-from python_scripts/utils.py import all #import the functions from the utils script
+from utils import all #import the functions from the utils script
 
 # name the directory
 directory = ("C:/Users/indie/Documents/GitHub/optical-ultrasound-processing/tungsten wire and finger imaging - debugging")
