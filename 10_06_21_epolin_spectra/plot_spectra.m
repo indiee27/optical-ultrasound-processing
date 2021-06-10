@@ -6,8 +6,8 @@ f_y = f_ref_light(2,:) - f_ref_dark(2,:);
 
 % EPOLIN 2MG
 
-f2a_light = (importdata('flame_2_1_light.txt')); f2a_dark = (importdata('flame_2_1_dark.txt'));
-f2a = ((f2a_light(2,:))-(f2a_dark(2,:)));
+%f2a_light = (importdata('flame_2_1_light.txt')); f2a_dark = (importdata('flame_2_1_dark.txt'));
+%f2a = ((f2a_light(2,:))-(f2a_dark(2,:)));
 f2b_light = (importdata('flame_2_2_light.txt')); f2b_dark = (importdata('flame_2_2_dark.txt'));
 f2b = ((f2b_light(2,:))-(f2b_dark(2,:)));
 f2c_light = (importdata('flame_2_3_light.txt')); f2c_dark = (importdata('flame_2_3_dark.txt'));
@@ -20,8 +20,8 @@ f2e = ((f2e_light(2,:))-(f2e_dark(2,:)));
 figure;
 
 title Flame 2mg
-plot(f_x, f2a)
-hold on
+%plot(f_x, f2a)
+%hold on
 plot(f_x, f2b)
 hold on
 plot(f_x, f2c)
@@ -31,7 +31,7 @@ hold on
 plot(f_x, f2e)
 hold on
 plot(f_x, f_y)
-legend('2_1', '2_2', '2_3', '2_4', '2_5', 'Ref')
+legend('2_2', '2_3', '2_4', '2_5', 'Ref')
 
 % EPOLIN 5MG
 
@@ -69,8 +69,8 @@ n_y = n_ref_light(2,:) - n_ref_dark(2,:);
 
 % EPOLIN 2MG
 
-n2a_light = (importdata('nir_2_1_light.txt')); n2a_dark = (importdata('nir_2_1_dark.txt'));
-n2a = ((n2a_light(2,:))-(n2a_dark(2,:)));
+%n2a_light = (importdata('nir_2_1_light.txt')); n2a_dark = (importdata('nir_2_1_dark.txt'));
+%n2a = ((n2a_light(2,:))-(n2a_dark(2,:)));
 n2b_light = (importdata('nir_2_2_light.txt')); n2b_dark = (importdata('nir_2_2_dark.txt'));
 n2b = ((n2b_light(2,:))-(n2b_dark(2,:)));
 n2c_light = (importdata('nir_2_3_light.txt')); n2c_dark = (importdata('nir_2_3_dark.txt'));
@@ -82,8 +82,8 @@ n2e = ((n2e_light(2,:))-(n2e_dark(2,:)));
 
 figure;
 title NIR 2mg
-plot(n_x, n2a)
-hold on
+%plot(n_x, n2a)
+%hold on
 plot(n_x, n2b)
 hold on
 plot(n_x, n2c)
@@ -93,7 +93,7 @@ hold on
 plot(n_x, n2e)
 hold on
 plot(n_x, n_y)
-legend('2_1', '2_2', '2_3', '2_4', '2_5', 'Ref')
+legend('2_2', '2_3', '2_4', '2_5', 'Ref')
 
 % EPOLIN 5MG
 
@@ -125,7 +125,7 @@ legend('5_1', '5_2', '5_3', '5_4', '5_5', 'Ref')
 
 %% PERCENTAGES
 % Replace negative values from the flame results
-f2a(f2a < 0) = 0;
+%f2a(f2a < 0) = 0;
 f2b(f2b < 0) = 0;
 f2c(f2c < 0) = 0;
 f2d(f2d < 0) = 0;
@@ -138,8 +138,8 @@ f5e(f5e < 0) = 0;
 f_y(f_y < 0) = 0;
 
 % Percentage calculations
-f2a_y = f2a./f_y;
-f2a_y(f2a_y > 1) = 1;
+%f2a_y = f2a./f_y;
+%f2a_y(f2a_y > 1) = 1;
 f2b_y = f2b./f_y;
 f2b_y(f2b_y > 1) = 1;
 f2c_y = f2c./f_y;
@@ -158,7 +158,7 @@ f5d_y = f5d./f_y;
 f5d_y(f5d_y > 1) = 1;
 f5e_y = f5e./f_y;
 f5e_y(f5e_y > 1) = 1;
-n2a_y = n2a./n_y;
+%n2a_y = n2a./n_y;
 n2b_y = n2b./n_y;
 n2c_y = n2c./n_y;
 n2d_y = n2d./n_y;
@@ -173,8 +173,8 @@ figure
 title Flame 2mg
 xlim([300 1100])
 ylim([0 1])
-plot(f_x, f2a_y)
-hold on
+%plot(f_x, f2a_y)
+%hold on
 plot(f_x, f2b_y)
 hold on
 plot(f_x, f2c_y)
@@ -183,7 +183,7 @@ plot(f_x, f2d_y)
 hold on
 plot(f_x, f2e_y)
 hold off
-legend('2_1', '2_2', '2_3', '2_4', '2_5')
+legend('2_2', '2_3', '2_4', '2_5')
 
 figure
 title Flame 5mg
@@ -204,8 +204,8 @@ legend('5_1', '5_2', '5_3', '5_4', '5_5')
 figure;
 title NIR 2mg
 
-plot(n_x, n2a_y)
-hold on
+%plot(n_x, n2a_y)
+%hold on
 plot(n_x, n2b_y)
 hold on
 plot(n_x, n2c_y)
@@ -214,7 +214,7 @@ plot(n_x, n2d_y)
 hold on
 plot(n_x, n2e_y)
 hold off
-legend('2_1', '2_2', '2_3', '2_4', '2_5')
+legend('2_2', '2_3', '2_4', '2_5')
 
 figure;
 title NIR 5mg
