@@ -10,10 +10,13 @@ hdr_inf = importdata([fname '_hdr.txt'], '\t');
 
 %% Set variables
 dt = t_axis(2) - t_axis(1);
+Nt = numel(t_axis);
+dx = ((hdr_inf.data(5))/(hdr_inf.data(3)))*1e-3;
+Nx = hdr_inf.data(2);
 dy = 50e-6;
 c = 1500;
 
-%% Filter
+%% Frequency Filter
 % butter function has (n, Wn, type) where n = nth order butterworth, Wn =
 % normalized cutoff frequency and type is high or low
 
@@ -26,15 +29,15 @@ ts = filtfilt(b,a,t_data);
 ts = filtfilt(b,a,ts);
 
 %% WHAT IS THIS?
-nwin = 50;
+nwin = 50; %20-60
 if ~mod(nwin,2)
     nwin = nwin+1;
 end 
 
-%% Data Mapping
+%% Cross Talk Removal
 Y_new = zeros(size(ts));
-Y_means = Y_new;
-Y_mod = Y_new;
+Y_means = zeros(size(ts));
+Y_mod = zeros(size(ts));
 
 T2s = zeros(3, size(ts,2)); %rename this variable it sucks
 
@@ -75,16 +78,26 @@ for i = 1:size(ts,2)
     
 end
 
-%% for recon??
+%% Reconstruction of Data
+% size of recon image
 
 forrecon = zeros(size(Y_new,1),size(Y_new,2)+400);
 forrecon(:,201:size(Y_new,2)+200) = Y_new;
 
-%% image construction
+%% Image Construction with Buffer
 p_xy = kspaceLineRecon(forrecon,dy,dt/2,c);
 
+%% Image Construction with no Buffer
+
+data_rec = p_xy(:,201:end-200);
 
 %% FWHM
 % this needs to be on the hilbert transformed data but before it is log
 % transformed
-FWHM_val = fwhm(x,y);
+
+%% Plot Hilbert transformed data
+figure;
+hilbert_image = abs(hilbert(squeeze(data_rec)));
+imagesc(hilbert_image);
+CA = caxis;
+caxis([dB 0]+max(CA));

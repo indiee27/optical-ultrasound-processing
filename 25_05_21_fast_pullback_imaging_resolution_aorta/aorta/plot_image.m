@@ -4,7 +4,7 @@ tseries = importdata('speed50ms_reprate1000hz_length30mm_data.txt');
 %taxis = importdata('first_ablation_taxis.txt');
 %set up parameters
 taxis = linspace(10e-9,26.67e-6,2667);
-tseries = tseries;
+tseries = tseries';
 dt = taxis(2)-taxis(1);
 dy = 100e-6;
 c = 1500;

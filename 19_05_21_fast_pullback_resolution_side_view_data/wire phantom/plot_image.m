@@ -12,7 +12,7 @@ c = 1500;
 % low pass filter
 [b,a]=butter(4,0.05,'high');
 ts=filtfilt(b,a,tseries);
-[b,a]=butter(4,0.5,'low');
+[b,a]=butter(4,0.1,'low');
 ts=filtfilt(b,a,ts);
 
 nwin=50;
@@ -66,17 +66,40 @@ forrecon(:,201:size(Y_new,2)+200) = Y_new;
 
 p_xy = kspaceLineRecon(forrecon,dy,dt/2,c);
 
+img = abs(hilbert(p_xy(:,200:end-200)));
+
 dB = -35;
 
 figure;
-subplot(2,1,1);
-imagesc(20*log10(abs(hilbert(Y_new))));
-CA = caxis;
-caxis([dB 0]+max(CA));
-title('Raw data (log+hilbert)');
-subplot(2,1,2);
-imagesc(20*log10(abs(hilbert(p_xy))));
-CA = caxis;
-caxis([dB 0]+max(CA));
-title('Reconstructed data (log+hilbert)');
-colormap(hot);
+imagesc(img);
+set(gca,'visible','off')
+colormap spring
+figure;
+imagesc(img);
+set(gca,'visible','off')
+colormap summer
+figure;
+imagesc(img);
+set(gca,'visible','off')
+colormap autumn
+figure;
+imagesc(img);
+set(gca,'visible','off')
+colormap winter
+
+figure;
+surf(img)
+colormap parula
+shading interp
+% figure;
+% subplot(2,1,1);
+% imagesc(20*log10(abs(hilbert(Y_new))));
+% CA = caxis;
+% caxis([dB 0]+max(CA));
+% title('Raw data (log+hilbert)');
+% subplot(2,1,2);
+% imagesc(20*log10(abs(hilbert(p_xy))));
+% CA = caxis;
+% caxis([dB 0]+max(CA));
+% title('Reconstructed data (log+hilbert)');
+% colormap(hot);

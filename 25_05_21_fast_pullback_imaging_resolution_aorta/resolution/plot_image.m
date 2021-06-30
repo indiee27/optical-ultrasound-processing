@@ -66,17 +66,19 @@ forrecon(:,201:size(Y_new,2)+200) = Y_new;
 
 p_xy = kspaceLineRecon(forrecon,dy,dt/2,c);
 
+img = abs(hilbert(p_xy(:,201:end-200)));
+
 dB = -35;
 
 figure;
-subplot(2,1,1);
-imagesc(20*log10(abs(hilbert(Y_new))));
-CA = caxis;
-caxis([dB 0]+max(CA));
-title('Raw data (log+hilbert)');
-subplot(2,1,2);
-imagesc(20*log10(abs(hilbert(p_xy))));
-CA = caxis;
-caxis([dB 0]+max(CA));
-title('Reconstructed data (log+hilbert)');
+%subplot(2,1,1);
+% imagesc(20*log10(abs(hilbert(Y_new))));
+% CA = caxis;
+% %caxis([dB 0]+max(CA));
+% title('Raw data (log+hilbert)');
+% subplot(2,1,2);
+imagesc(img);
+% CA = caxis;
+% caxis([dB 0]+max(CA));
+%title('Reconstructed data (log+hilbert)');
 colormap(hot);
