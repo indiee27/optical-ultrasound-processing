@@ -1,5 +1,0 @@
-Samples per A-line	2000
-Number of A-lines	100
-Repetition rate (Hz)	200
-Scan length (mm)	20
-Pullback speed (mm/s)	40
