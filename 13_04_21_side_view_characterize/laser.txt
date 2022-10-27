@@ -1,3 +1,0 @@
-20 uJ per pulse
-fiber 1 is diagonal 
-fiber 4 is a dud
