@@ -15,6 +15,12 @@ for x = 1
    %% load data
    t = (['scan_' num2str(x)]);
    
+   hdr_info = importdata([t '_hdr.txt']);
+   Nx = hdr_info.data(1);
+   Ny = hdr_info.data(2);
+   dx = hdr_info.data(3);
+   dy = hdr_info.data(4);
+   
    % sizes
    f1 = importdata([t '_1.txt']);
    samples = length(f1);
@@ -32,13 +38,7 @@ for x = 1
    end
    
    taxis = importdata([t '_taxis.txt']);
-   dt = (taxis(2) - taxis(1));
-   
-   hdr_info = importdata([t '_hdr.txt']);
-   Nx = hdr_info.data(1);
-   Ny = hdr_info.data(2);
-   dx = hdr_info.data(3);
-   dy = hdr_info.data(4);
+   dt = (taxis(2) - taxis(1));  
    
    scan_length = Ny*dy;
    scan_depth = round(((samples*c*1e-8)/2)*1000,0);
@@ -133,7 +133,7 @@ for x = 1
        %colorbar
        %subplot(2,1,2);
        set(gca, 'box', 'off','fontsize',12,'fontname','arial')
-       imagesc(20*log10(abs(hilbert(p_xy(:,201:end-200))))
+       imagesc(20*log10(abs(hilbert(p_xy(:,201:end-200)))))
        CA = caxis;
        caxis([dB 0] + max(CA));
        xticks([1 a_lines/2 a_lines-1])
