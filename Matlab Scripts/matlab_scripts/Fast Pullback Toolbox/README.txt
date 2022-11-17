@@ -1,0 +1,3 @@
+- FWHM
+- FWHM -> res
+- plot?
