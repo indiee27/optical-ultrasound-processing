@@ -1,4 +1,4 @@
-function [depth, peakPos] = findsurface2(data, threshold, visibility)
+function [peakPos, depth] = findsurface2(data, threshold, visibility)
 
 [data_rows, data_cols] = size(data);
 peakPos = zeros(data_rows, data_cols);
